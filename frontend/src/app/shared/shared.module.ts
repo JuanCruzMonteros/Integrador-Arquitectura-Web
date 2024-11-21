@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/layout/layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -11,14 +12,16 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
-    CommonModule    
+    CommonModule,
+    MaterialModule
   ],
   exports: [
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     LayoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    MaterialModule
   ]
 })
 export class SharedModule { }

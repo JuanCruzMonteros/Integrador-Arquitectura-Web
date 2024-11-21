@@ -10,11 +10,11 @@ import { Sesion } from '../interfaces/sesion.interface';
 })
 export class UserService {
 
-  baseUrl = environment.apiUrl + "usuario";
+  baseUrl = environment.apiUrl + "Usuario";
 
   constructor(private http: HttpClient) { }
 
   login(request: Login): Observable<Sesion> {
-    return this.http.post<Sesion>(`${this.baseUrl}`, request);
+    return this.http.post<Sesion>(`${this.baseUrl}/login`, request);
   }
 }
