@@ -1,8 +1,10 @@
-﻿using Data.interfaces;
-using Data.services;
-using Data;
+﻿using Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Data.interfaces;
+using Data.services;
+using API.Errores;
 
 namespace API.Extensiones
 {
@@ -15,14 +17,13 @@ namespace API.Extensiones
             {
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "Ingresar Bearer [espacio] token \r\n\r\n Ejemplo Bearer ejoy98989",
+                    Description = "Ingresar Bearer [espacio] token \r\n\r\n " +
+                                  "Ejemplo: Bearer ejoy^88788999990000",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer"
                 });
-
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement()
                 {
                     {
                         new OpenApiSecurityScheme
@@ -32,19 +33,35 @@ namespace API.Extensiones
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "Bearer"
                             },
-                            Scheme = "Bearer",
+                            Scheme = "oauth2",
                             Name = "Bearer",
                             In = ParameterLocation.Header
                         },
-                        new List<string>() // Una lista vacía de scopes ya que no es OAuth2
+                        new List<string>()
                     }
                 });
             });
-
             var connectionString = config.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
+> ();
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    var errores = actionContext.ModelState
+                                  .Where(e => e.Value.Errors.Count > 0)
+                                  .SelectMany(x => x.Value.Errors)
+                                  .Select(x => x.ErrorMessage).ToArray();
+                    var errorResponse = new ApiValidacionErrorResponse
+                    {
+                        Errores = errores
+                    };
+                    return new BadRequestObjectResult(errorResponse);
+                };
+            });
+
             return services;
         }
     }
