@@ -42,7 +42,14 @@ namespace API.Extensiones
                 });
             });
             var connectionString = config.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, options =>
+            {
+                options.EnableRetryOnFailure(
+                    maxRetryCount: 5, // Número máximo de reintentos
+                    maxRetryDelay: TimeSpan.FromSeconds(10), // Tiempo máximo entre reintentos
+                    errorNumbersToAdd: null // Lista de códigos de error adicionales para manejar (opcional)
+                );
+            }));
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
             services.Configure<ApiBehaviorOptions>(options =>
