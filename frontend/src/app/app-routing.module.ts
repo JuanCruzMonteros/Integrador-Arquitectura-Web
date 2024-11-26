@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './users/components/login/login.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
     path: 'login', component: LoginComponent, pathMatch: 'full'
   },
   {
-    path: 'layout', component: LayoutComponent, pathMatch: 'full'
+    path: 'layout', loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)
   },
   {
     path: '**', redirectTo: '', pathMatch: 'full'
@@ -19,7 +20,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)
+  ],
   exports: [
     RouterModule,
   ]

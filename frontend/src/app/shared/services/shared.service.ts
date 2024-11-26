@@ -23,7 +23,7 @@ export class SharedService {
     localStorage.setItem(this.userStorageKey, JSON.stringify(session))
   }
 
-  getSession(session: Sesion) {
+  getSession() {
     const sessionString = localStorage.getItem(this.userStorageKey)
     return JSON.parse(sessionString!)
   }

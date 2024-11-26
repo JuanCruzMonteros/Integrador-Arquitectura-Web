@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/layout/layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialModule } from '../material/material.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { LayoutRoutingModule } from './layout-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { MaterialModule } from '../material/material.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    LayoutRoutingModule
   ],
   exports: [
     ReactiveFormsModule,
