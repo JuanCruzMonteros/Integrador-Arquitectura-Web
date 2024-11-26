@@ -45,7 +45,6 @@ namespace API.Extensiones
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
-> ();
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>
