@@ -5,6 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Data.interfaces;
 using Data.services;
 using API.Errores;
+using Data.Interfaces.IRepositorio;
+using Data.Repositorio;
+using Utilidades;
+using BLL.Servicios.Interfaces;
+using BLL.Servicios;
 
 namespace API.Extensiones
 {
@@ -67,6 +72,11 @@ namespace API.Extensiones
                     return new BadRequestObjectResult(errorResponse);
                 };
             });
+
+            services.AddScoped<IUnidadTrabajo, UnidadTrabajo>();
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<IEspecialidadServicio, EspecialidadServicio>();
+           //services.AddScoped<IMedicoServicio, MedicoServicio>();
 
             return services;
         }
