@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/services/shared.service';
-import { Login } from 'src/app/user/interfaces/login.interface';
-import { UserService } from 'src/app/user/services/user.service';
+import { UserService } from 'src/app/users/services/user.service';
+import { Login } from '../../interfaces/login.interface';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +38,7 @@ export class LoginComponent {
     this.userService.login(request).subscribe({
       next: (response) => {
         this.sharedService.guardarSesion(response);
-        this.router.navigate(['layout']);
+        this.router.navigate(['layout/medicos']);
       },
       complete: () => {
         this.isLoading = false;

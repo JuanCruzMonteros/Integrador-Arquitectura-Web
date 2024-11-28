@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { UserService } from '../user/services/user.service';
+import { UserService } from './services/user.service';
 import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
