@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
+import { Menu } from '../../interfaces/menu.interface';
 
 @Component({
   selector: 'app-layout',
@@ -8,6 +9,14 @@ import { SharedService } from '../../services/shared.service';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent {
+
+  menuItems: Menu[] = [
+    { titulo: 'Especialidades', icono: 'category', ruta: '/layout/especialidades' },
+    { titulo: 'Medicos', icono: 'group_add', ruta: '/layout/medicos' },
+  ];
+  // Opciones para agregar al agregar roles de usuario
+      /* { titulo: 'Usuarios', icono: 'person', ruta: '/layout/usuarios' },
+    { titulo: 'Dashboard', icono: 'dashboard', ruta: '/layout/dashboard' }, */
 
   username: string = '';
 
