@@ -17,7 +17,7 @@ namespace Data.Repositorio
         {
             _db = db;
             Especialidad = new EspecialidadRepositorio(db);
-            // Medico = new MedicoRepositorio(db);
+            Medico = new MedicoRepositorio(db);
         }
 
         public void Dispose()

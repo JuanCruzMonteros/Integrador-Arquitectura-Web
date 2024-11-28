@@ -1,16 +1,10 @@
 ﻿using Data.Interfaces.IRepositorio;
 using Models.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repositorio
 {
-    public class MedicoRepositorio // : Repositorio<Medico>, IMedicoRepositorio
+    public class MedicoRepositorio : Repositorio<Medico>, IMedicoRepositorio
     {
-        /*
         private readonly ApplicationDbContext _db;
 
         public MedicoRepositorio(ApplicationDbContext db) : base(db)
@@ -20,8 +14,6 @@ namespace Data.Repositorio
 
         public void Actualizar(Medico medico)
         {
-            
-
                 var medicoDb = _db.Medicos.FirstOrDefault(e => e.Id == medico.Id);
                 if (medicoDb != null)
                 {
@@ -35,7 +27,6 @@ namespace Data.Repositorio
                     medicoDb.Direccion = medico.Direccion;
                     _db.SaveChanges();
                 }
-            
-    }*/
+        }
     }
 }
