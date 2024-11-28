@@ -5,9 +5,12 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ListadoEspecialidadComponent } from '../especialidad/pages/listado-especialidad/listado-especialidad.component';
 import { ListadoMedicoComponent } from '../medico/component/listado-medico/listado-medico.component';
+import { authGuard } from '../_guards/auth.guard';
 
 const routes: Routes = [{
   path: '', component: LayoutComponent,
+  runGuardsAndResolvers: 'always',
+  canActivate: [ authGuard ],
   children: [
     {
       path: 'dashboard', component: DashboardComponent, pathMatch: 'full'
