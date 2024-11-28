@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ListadoEspecialidadComponent } from '../espacialidad/pages/listado-especialidad/listado-especialidad.component';
+import { ListadoEspecialidadComponent } from '../especialidad/pages/listado-especialidad/listado-especialidad.component';
 
 const routes: Routes = [{
   path: '', component: LayoutComponent,
