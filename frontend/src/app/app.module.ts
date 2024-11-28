@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './users/users.module';
+import { EspecialidadModule } from './especialidad/especialidad.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,8 @@ import { UserModule } from './users/users.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    UserModule
+    UserModule,
+    EspecialidadModule
   ],
   /* providers: [
     {
