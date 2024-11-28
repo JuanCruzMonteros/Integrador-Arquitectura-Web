@@ -17,14 +17,14 @@ export class LayoutComponent {
   }
 
   ngOnInit(): void {
-    const usuarioSesion = this.sharedService.getSession();
+    const usuarioSesion = this.sharedService.obtenerSesion();
     if (usuarioSesion != null) {
       this.username = usuarioSesion;
     }
   }
 
   cerrarSesion() {
-    this.sharedService.deleteSession();
+    this.sharedService.eliminarSesion();
 
     // this.cookieService.delete('Authorization','/');
 

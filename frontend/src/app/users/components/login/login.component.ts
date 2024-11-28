@@ -37,14 +37,14 @@ export class LoginComponent {
 
     this.userService.login(request).subscribe({
       next: (response) => {
-        this.sharedService.saveSession(response);
+        this.sharedService.guardarSesion(response);
         this.router.navigate(['layout']);
       },
       complete: () => {
         this.isLoading = false;
       },
       error: (error) => {
-        this.sharedService.alert(error.error, 'Error!');
+        this.sharedService.mostrarAlerta(error.error, 'Error!');
         this.isLoading = false;
       }
     })

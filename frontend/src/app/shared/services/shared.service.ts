@@ -7,28 +7,28 @@ import { Sesion } from 'src/app/user/interfaces/sesion.interface';
 })
 export class SharedService {
 
-  private readonly userStorageKey: string = "userSesion";
-
   constructor(private _snackBar: MatSnackBar) { }
 
-  alert(message: string, type: string) {
-    this._snackBar.open(message, type, {
+  mostrarAlerta(mensaje: string, tipo: string){
+    this._snackBar.open(mensaje, tipo, {
       horizontalPosition: "end",
-      verticalPosition: "top",
-      duration: 3000
+      verticalPosition:"top",
+      duration:3000
     })
   }
 
-  saveSession(session: Sesion) {
-    localStorage.setItem(this.userStorageKey, JSON.stringify(session))
+  guardarSesion(sesion: Sesion) {
+      localStorage.setItem("usuarioSesion",JSON.stringify(sesion.username));
   }
 
-  getSession() {
-    const sessionString = localStorage.getItem(this.userStorageKey)
-    return JSON.parse(sessionString!)
+  obtenerSesion() {
+    const sesionString = localStorage.getItem("usuarioSesion");
+    const usuarioSesion = JSON.parse(sesionString!);
+    return usuarioSesion;
   }
 
-  deleteSession() {
-    localStorage.removeItem(this.userStorageKey)
+  eliminarSesion(){
+    localStorage.removeItem("usuarioSesion");
   }
+
 }
