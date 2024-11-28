@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './users/users.module';
 import { EspecialidadModule } from './especialidad/especialidad.module';
+import { MedicoModule } from './medico/medico.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { EspecialidadModule } from './especialidad/especialidad.module';
     HttpClientModule,
     BrowserAnimationsModule,
     UserModule,
-    EspecialidadModule
+    EspecialidadModule,
+    MedicoModule
   ],
   /* providers: [
     {
